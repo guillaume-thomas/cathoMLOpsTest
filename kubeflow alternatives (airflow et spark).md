@@ -1,0 +1,44 @@
+1. https://www.google.com/search?q=kubeflow+alternatives&oq=kubeflow+alter&gs_lcrp=EgZjaHJvbWUqCQgAEAAYExiABDIJCAAQABgTGIAEMgYIARBFGDkyCQgCEAAYExiABDIKCAMQABgTGBYYHtIBCDYxMTNqMGo3qAIAsAIA&client=ms-android-samsung-ss&sourceid=chrome-mobile&ie=UTF-8&chrome_dse_attribution=1
+2. https://neptune.ai/blog/the-best-kubeflow-alternatives
+3. https://www.tensorflow.org/federated/tutorials/high_performance_simulation_with_kubernetes?hl=fr
+4. https://www.google.com/search?q=remote+tensirflow+cluster&oq=remote+tensirflow+cluster&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIJCAEQIRgKGKABMgkIAhAhGAoYoAHSAQkxNDI4OGoxajeoAgCwAgA&client=ms-android-samsung-ss&sourceid=chrome-mobile&ie=UTF-8&chrome_dse_attribution=1
+5. https://www.google.com/search?q=tensorflow+pipeline&oq=tensorflow+pipeline&gs_lcrp=EgZjaHJvbWUyCQgAEEUYORiABDIICAEQABgWGB4yCAgCEAAYFhgeMggIAxAAGBYYHjIICAQQABgWGB4yCAgFEAAYFhgeMggIBhAAGBYYHjIICAcQABgWGB4yCAgIEAAYFhgeMggICRAAGBYYHjIICAoQABgWGB4yCAgLEAAYFhgeMggIDBAAGBYYHjIICA0QABgWGB4yCAgOEAAYFhge0gEINDEwMGowajeoAgCwAgA&client=ms-android-samsung-ss&sourceid=chrome-mobile&ie=UTF-8&chrome_dse_attribution=1
+6. https://www.google.com/search?q=tensorflow+pipeline+openshift&oq=tensorflow+pipeline+openshift&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQIRigAdIBCDc2MDFqMGo3qAIAsAIA&client=ms-android-samsung-ss&sourceid=chrome-mobile&ie=UTF-8&chrome_dse_attribution=1#ip=1
+7. https://levelup.gitconnected.com/run-an-automated-ml-pipeline-with-ceph-bucket-notifications-tensorflow-and-flask-using-openshift-2ca741c29701
+8. https://www.google.com/search?q=train+tensorflow+kubernetes&oq=train+tensorflow+kubernetes&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQIRigAdIBCTEyNjgwajBqN6gCALACAA&client=ms-android-samsung-ss&sourceid=chrome-mobile&ie=UTF-8&chrome_dse_attribution=1#ip=1
+9. https://blog.tensorflow.org/2021/06/training-with-multiple-workers-using-tensorflow-quantum.html?m=1
+10. https://github.com/learnk8s/distributed-tensorflow-on-k8s
+11. https://www.google.com/search?q=tensorflow+in+apache+spark&oq=tensorflow+in+apache+spark&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIICAEQABgWGB4yCAgCEAAYFhge0gEIODM4M2owajeoAgCwAgA&client=ms-android-samsung-ss&sourceid=chrome-mobile&ie=UTF-8&chrome_dse_attribution=1
+12. https://spark.apache.org/docs/latest/ml-pipeline.html
+13. https://spark.apache.org/docs/latest/web-ui.html
+14. https://www.tensorflow.org/tfx?hl=fr
+15. https://spark.apache.org/docs/latest/running-on-kubernetes.html
+16. https://www.google.com/search?q=tensorflow+tfx+kubernetes+without+kubeflow&client=ms-android-samsung-ss&sca_esv=593610628&ei=z62JZem3D_KekdUP--inqAI&oq=tensorflow+tfx+kubernetes+without+kubeflow&gs_lp=EhNtb2JpbGUtZ3dzLXdpei1zZXJwIip0ZW5zb3JmbG93IHRmeCBrdWJlcm5ldGVzIHdpdGhvdXQga3ViZWZsb3cyBRAhGKABSOUqUMwGWPcocAF4AZABAJgBlQGgAa8MqgEEMTQuM7gBA8gBAPgBAcICChAAGEcY1gQYsAPCAgcQIRigARgKwgIEECEYFeIDBBgAIEGIBgGQBgg&sclient=mobile-gws-wiz-serp
+17. https://stackoverflow.com/questions/60787646/kubeflow-vs-other-options
+18. https://jlgjosue.medium.com/do-not-use-kubeflow-c8a38a5307a2
+19. https://m.youtube.com/watch?v=17l3VR2MIeg
+20. https://www.google.com/search?q=airflow+vs+kubeflow&oq=airflow+vs+kubeflow&gs_lcrp=EgZjaHJvbWUyCwgAEEUYExg5GIAEMgkIARAAGBMYgATSAQg2ODQzajBqN6gCALACAA&client=ms-android-samsung-ss&sourceid=chrome-mobile&ie=UTF-8&chrome_dse_attribution=1
+21. https://airflow.apache.org/docs/apache-airflow/stable/administration-and-deployment/kubernetes.html
+22. https://airflow.apache.org/
+23. https://www.google.com/search?q=tensorflow+with+airflow&oq=tensorflow+with+airflow&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIICAEQABgWGB7SAQg3NDgzajBqN6gCALACAA&client=ms-android-samsung-ss&sourceid=chrome-mobile&ie=UTF-8&chrome_dse_attribution=1
+24. https://m.youtube.com/watch?v=4tRTfwqcuWU
+1. https://www.tensorflow.org/tfx/tutorials/tfx/airflow_workshop?hl=fr
+2. https://airflow.apache.org/docs/apache-airflow/stable/administration-and-deployment/kubernetes.html
+3. https://www.bhavaniravi.com/apache-airflow/deploying-airflow-on-kubernetes
+4. https://www.google.com/search?q=tensorflow+mlflow+airflow&oq=tensorflow+mlflow+airflow&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQIRigAdIBCTEwMzczajBqN6gCALACAA&client=ms-android-samsung-ss&sourceid=chrome-mobile&ie=UTF-8&chrome_dse_attribution=1
+5. https://m.youtube.com/watch?v=rszjhcQsJ3s
+6. https://m.youtube.com/watch?v=4tRTfwqcuWU
+7. https://m.youtube.com/watch?v=xS2wTgcWE3k
+8. https://www.astronomer.io/events/webinars/using-airflow-with-tensorflow-mlflow/?utm_campaign=Marketing&utm_source=GettingStartedEBook&ref=M25
+9. https://www.astronomer.io/?utm_campaign=Marketing&utm_source=GettingStartedEBook&ref=M25
+10. https://github.com/albincorreya/ml-training-airflow-mlflow-example
+11. https://fr.m.wikipedia.org/wiki/Apache_Airflow
+12. https://www.google.com/search?q=tensorflow+spark&oq=tensorflow+spark&gs_lcrp=EgZjaHJvbWUyCQgAEEUYORiABDIICAEQABgWGB4yCAgCEAAYFhgeMggIAxAAGBYYHjIKCAQQABgPGBYYHjIICAUQABgWGB4yCAgGEAAYFhgeMggIBxAAGBYYHjIICAgQABgWGB4yCAgJEAAYFhgeMggIChAAGBYYHjIICAsQABgWGB4yCAgMEAAYFhgeMggIDRAAGBYYHjIICA4QABgWGB7SAQg0OTA5ajBqN6gCALACAA&client=ms-android-samsung-ss&sourceid=chrome-mobile&ie=UTF-8&chrome_dse_attribution=1
+13. https://spark.apache.org/docs/latest/running-on-kubernetes.html
+14. https://stackshare.io/stackups/airflow-vs-spark
+15. https://www.google.com/search?q=apache+airflow+github+actions&oq=apache+airflow+github+actio&gs_lcrp=EgZjaHJvbWUqCAgBEAAYFhgeMgYIABBFGDkyCAgBEAAYFhgeMggIAhAAGBYYHtIBCTEyMDM1ajBqN6gCALACAA&client=ms-android-samsung-ss&sourceid=chrome-mobile&ie=UTF-8&chrome_dse_attribution=1#ip=1
+16. https://garystafford.medium.com/devops-for-dataops-building-a-ci-cd-pipeline-for-apache-airflow-dags-975e4a622f83
+17. https://m.youtube.com/watch?v=DmmWWYaJBGk
+
+https://github.com/write4alive/Data-Pipelines-with-Apache-Airflow
+https://github.com/BasPH/data-pipelines-with-apache-airflow
