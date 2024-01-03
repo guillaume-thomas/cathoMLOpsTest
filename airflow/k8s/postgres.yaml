@@ -59,7 +59,8 @@ spec:
               cpu: 1000m
       volumes:
         - name: dbvol
-          emptyDir: {}
+          persistentVolumeClaim:
+            claimName: psql-pv-claim
   serviceName: postgres-airflow
 ---
 apiVersion: v1
@@ -73,3 +74,14 @@ spec:
       targetPort: 5432
   selector:
     name: postgres-airflow
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: psql-pv-claim
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi

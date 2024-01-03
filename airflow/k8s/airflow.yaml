@@ -116,7 +116,7 @@ spec:
   accessModes:
     - ReadOnlyMany
   capacity:
-    storage: 2Gi
+    storage: 1Gi
   hostPath:
     path: /airflow-dags/
 ---
@@ -129,7 +129,7 @@ spec:
     - ReadOnlyMany
   resources:
     requests:
-      storage: 2Gi
+      storage: 1Gi
 ---
 kind: PersistentVolume
 apiVersion: v1
@@ -139,7 +139,7 @@ spec:
   accessModes:
     - ReadOnlyMany
   capacity:
-    storage: 2Gi
+    storage: 1Gi
   hostPath:
     path: /airflow-logs/
 ---
@@ -152,4 +152,4 @@ spec:
     - ReadOnlyMany
   resources:
     requests:
-      storage: 2Gi
+      storage: 1Gi
