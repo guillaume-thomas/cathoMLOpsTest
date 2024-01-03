@@ -31,6 +31,13 @@ spec:
           args:
             - "-cx"
             - "./tmp/init.sh "
+          resources:
+            limits:
+              cpu: 600m
+              memory: 256Mi
+            requests:
+              cpu: 300m
+              memory: 128Mi
       containers:
         - name: webserver
           image: quay.io/gthomas59800/kto/airflow-2023-2024:latest
@@ -57,6 +64,13 @@ spec:
               mountPath: /root/airflow/dags
             - name: airflow-logs
               mountPath: /root/airflow/logs
+          resources:
+            limits:
+              cpu: 600m
+              memory: 256Mi
+            requests:
+              cpu: 300m
+              memory: 128Mi
         - name: scheduler
           image: quay.io/gthomas59800/kto/airflow-2023-2024:latest
           imagePullPolicy: Always
@@ -79,6 +93,13 @@ spec:
               mountPath: /root/airflow/dags
             - name: airflow-logs
               mountPath: /root/airflow/logs
+          resources:
+            limits:
+              cpu: 600m
+              memory: 256Mi
+            requests:
+              cpu: 300m
+              memory: 128Mi
       volumes:
         - name: airflow-dags
           persistentVolumeClaim:
