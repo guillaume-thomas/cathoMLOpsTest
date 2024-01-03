@@ -108,48 +108,24 @@ spec:
   selector:
     name: airflow
 ---
-kind: PersistentVolume
-apiVersion: v1
-metadata:
-  name: airflow-dags
-spec:
-  accessModes:
-    - ReadOnlyMany
-  capacity:
-    storage: 1Gi
-  hostPath:
-    path: /airflow-dags/
----
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: airflow-dags
 spec:
   accessModes:
-    - ReadOnlyMany
+    - ReadWriteOnce
   resources:
     requests:
       storage: 1Gi
 ---
-kind: PersistentVolume
-apiVersion: v1
-metadata:
-  name: airflow-logs
-spec:
-  accessModes:
-    - ReadOnlyMany
-  capacity:
-    storage: 1Gi
-  hostPath:
-    path: /airflow-logs/
----
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: airflow-logs
 spec:
   accessModes:
-    - ReadOnlyMany
+    - ReadWriteOnce
   resources:
     requests:
       storage: 1Gi
