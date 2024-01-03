@@ -1,0 +1,155 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: airflow
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: airflow
+    spec:
+      serviceAccountName: airflow
+      initContainers:
+        - name: "init"
+          image: quay.io/gthomas59800/kto/airflow-2023-2024:latest
+          imagePullPolicy: Always
+          volumeMounts:
+            - name: airflow-configmap
+              mountPath: /root/airflow/airflow.cfg
+              subPath: airflow.cfg
+            - name: airflow-dags
+              mountPath: /root/airflow/dags
+          env:
+            - name: SQL_ALCHEMY_CONN
+              valueFrom:
+                secretKeyRef:
+                  name: airflow-secrets
+                  key: sql_alchemy_conn
+          command:
+            - "bash"
+          args:
+            - "-cx"
+            - "./tmp/init.sh "
+      containers:
+        - name: webserver
+          image: quay.io/gthomas59800/kto/airflow-2023-2024:latest
+          imagePullPolicy: Always
+          ports:
+            - name: webserver
+              containerPort: 8080
+          args: ["webserver"]
+          env:
+            - name: AIRFLOW_KUBE_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: SQL_ALCHEMY_CONN
+              valueFrom:
+                secretKeyRef:
+                  name: airflow-secrets
+                  key: sql_alchemy_conn
+          volumeMounts:
+            - name: airflow-configmap
+              mountPath: /root/airflow/airflow.cfg
+              subPath: airflow.cfg
+            - name: airflow-dags
+              mountPath: /root/airflow/dags
+            - name: airflow-logs
+              mountPath: /root/airflow/logs
+        - name: scheduler
+          image: quay.io/gthomas59800/kto/airflow-2023-2024:latest
+          imagePullPolicy: Always
+          args: ["scheduler"]
+          env:
+            - name: AIRFLOW_KUBE_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: SQL_ALCHEMY_CONN
+              valueFrom:
+                secretKeyRef:
+                  name: airflow-secrets
+                  key: sql_alchemy_conn
+          volumeMounts:
+            - name: airflow-configmap
+              mountPath: /root/airflow/airflow.cfg
+              subPath: airflow.cfg
+            - name: airflow-dags
+              mountPath: /root/airflow/dags
+            - name: airflow-logs
+              mountPath: /root/airflow/logs
+      volumes:
+        - name: airflow-dags
+          persistentVolumeClaim:
+            claimName: airflow-dags
+        - name: airflow-dags-fake
+          emptyDir: {}
+        - name: airflow-dags-git
+          emptyDir: {}
+        - name: airflow-logs
+          persistentVolumeClaim:
+            claimName: airflow-logs
+        - name: airflow-configmap
+          configMap:
+            name: airflow-configmap
+  selector:
+    matchLabels:
+      name: airflow
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: airflow
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 8080
+  selector:
+    name: airflow
+---
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: airflow-dags
+spec:
+  accessModes:
+    - ReadOnlyMany
+  capacity:
+    storage: 2Gi
+  hostPath:
+    path: /airflow-dags/
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: airflow-dags
+spec:
+  accessModes:
+    - ReadOnlyMany
+  resources:
+    requests:
+      storage: 2Gi
+---
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: airflow-logs
+spec:
+  accessModes:
+    - ReadOnlyMany
+  capacity:
+    storage: 2Gi
+  hostPath:
+    path: /airflow-logs/
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: airflow-logs
+spec:
+  accessModes:
+    - ReadOnlyMany
+  resources:
+    requests:
+      storage: 2Gi
