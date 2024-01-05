@@ -24,7 +24,7 @@ spec:
             - --workers=2
           env:
             - name: MLFLOW_S3_ENDPOINT_URL
-              value: http://mlflow-minio-service.gthomas59800-dev.svc.cluster.local
+              value: http://mlflow-minio-service.gthomas59800-dev.svc.cluster.local:9000
             - name: AWS_ACCESS_KEY_ID
               value: "minio"
             - name: AWS_SECRET_ACCESS_KEY

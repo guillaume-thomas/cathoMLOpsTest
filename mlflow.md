@@ -41,3 +41,5 @@ https://mlflow.org/docs/latest/getting-started/logging-first-model/step5-synthet
 https://mlflo.org/docs/latest/python_api/mlflow.data.html
 
 https://medium.com/@haythemtellili/end-to-end-ml-pipelines-with-mlflow-projects-63a11baa2dd1
+
+Regarder ça !!! https://github.com/mlflow/mlflow/tree/master/examples/docker

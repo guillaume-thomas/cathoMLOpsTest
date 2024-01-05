@@ -16,15 +16,21 @@ spec:
         - name: mlflow-pvc
           persistentVolumeClaim:
             claimName: mlflow-pvc
+        - name: minio-initdb
+          configMap:
+            name: minio-initdb-config
+            defaultMode: 0777
       containers:
         - name: minio
-          image: minio/minio:latest
+          image: quay.io/minio/minio:latest
           args:
             - server
             - /data
           volumeMounts:
             - name: mlflow-pvc
               mountPath: '/data'
+            - name: minio-initdb
+              mountPath: '/init'
           env:
             - name: MINIO_ROOT_USER
               value: "minio"
@@ -39,19 +45,21 @@ spec:
             limits:
               cpu: "500m"
               memory: 256Mi
+          lifecycle:
+            postStart:
+              exec:
+                command: [ "/bin/sh", "-c", '/init/init.sh' ]
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: mlflow-minio-service
 spec:
-  type: NodePort
   ports:
     - port: 9000
-      targetPort: 9000
-      protocol: TCP
+      name: s3
   selector:
-    app: mlflow-minio
+    app: minio
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -63,3 +71,14 @@ spec:
   resources:
     requests:
       storage: 100Mi
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: minio-initdb-config
+data:
+  init.sh: |
+    echo 'Waiting starting'
+    sleep 10
+    mc alias set minio http://127.0.0.1:9000 minio minio123
+    mc mb minio/mlflow

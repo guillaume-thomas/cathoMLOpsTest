@@ -1,0 +1,35 @@
+name: Python Continuous Integration
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  train:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v3
+        with:
+          python-version: 3.11
+      - name: Install mlflow
+        run: |
+          python -m pip install --upgrade pip
+          pip install mlflow[extras]
+      - name: Configure Docker (Quay) & Kubectl (Openshift Sandbox)
+        run: |
+          docker login -u="${{vars.QUAY_ROBOT_USERNAME}}" -p="${{secrets.QUAY_ROBOT_TOKEN}}" quay.io
+          kubectl config set-cluster openshift-cluster --server=${{vars.OPENSHIFT_SERVER}}
+          kubectl config set-credentials openshift-credentials --token=${{secrets.OPENSHIFT_TOKEN}}
+          kubectl config set-context openshift-context --cluster=openshift-cluster --user=openshift-credentials --namespace=${{vars.OPENSHIFT_USERNAME}}-dev
+          kubectl config use openshift-context
+      - name: Build training image
+        run: |
+          cd example
+          docker build -t quay.io/gthomas59800/kto/mlflow-train-2023-2024:latest .
+      - name: Launch mlflow training in Openshift
+        run: |
+          export KUBE_MLFLOW_TRACKING_URI="http://mlflow-gthomas59800-dev.apps.sandbox-m3.1530.p1.openshiftapps.com"
+          export MLFLOW_TRACKING_URI="http://mlflow-gthomas59800-dev.apps.sandbox-m3.1530.p1.openshiftapps.com"
+          cd example
+          mlflow run . --experiment-name my-experiment --backend kubernetes --backend-config kubernetes_config.json -P alpha=0.5
