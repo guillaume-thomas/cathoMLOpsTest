@@ -5,20 +5,13 @@ metadata:
   namespace: gthomas59800-dev
 spec:
   ttlSecondsAfterFinished: 100
-  backoffLimit: 0
+  backoffLimit: 3
   template:
     spec:
       containers:
         - name: "{replaced with MLflow Project name}"
           image: "{replaced with URI of Docker image created during Project execution}"
           command: ["{replaced with MLflow Project entry point command}"]
-          env:
-            - name: MLFLOW_S3_ENDPOINT_URL
-              value: http://mlflow-minio-service.gthomas59800-dev.svc.cluster.local:9000
-            - name: AWS_ACCESS_KEY_ID
-              value: "minio"
-            - name: AWS_SECRET_ACCESS_KEY
-              value: "minio123"
           resources:
             limits:
               memory: 512Mi

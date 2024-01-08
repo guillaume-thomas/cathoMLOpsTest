@@ -1,4 +1,4 @@
-name: docker-example
+name: wine-quality
 
 docker_env:
   image: quay.io/gthomas59800/kto/mlflow-train-2023-2024

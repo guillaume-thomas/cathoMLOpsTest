@@ -26,10 +26,10 @@ jobs:
       - name: Build training image
         run: |
           cd example
-          docker build -t quay.io/gthomas59800/kto/mlflow-train-2023-2024:latest .
+          docker build -t quay.io/gthomas59800/kto/mlflow-train-2023-2024:latest --build-arg MLFLOW_S3_ENDPOINT_URL=${{vars.MLFLOW_S3_ENDPOINT_URL}} --build-arg AWS_ACCESS_KEY_ID=${{vars.AWS_ACCESS_KEY_ID}} --build-arg AWS_SECRET_ACCESS_KEY=${{secrets.AWS_SECRET_ACCESS_KEY}} .
       - name: Launch mlflow training in Openshift
         run: |
           export KUBE_MLFLOW_TRACKING_URI="http://mlflow-gthomas59800-dev.apps.sandbox-m3.1530.p1.openshiftapps.com"
           export MLFLOW_TRACKING_URI="http://mlflow-gthomas59800-dev.apps.sandbox-m3.1530.p1.openshiftapps.com"
           cd example
-          mlflow run . --experiment-name my-experiment --backend kubernetes --backend-config kubernetes_config.json -P alpha=0.5
+          mlflow run . --experiment-name wine-quality-experiment --backend kubernetes --backend-config kubernetes_config.json -P alpha=0.5
