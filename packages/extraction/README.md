@@ -9,4 +9,4 @@ pip install -e extraction
 
 cd extraction
 python setup.py sdist bdist_wheel
-cd dist
+cd ../..
