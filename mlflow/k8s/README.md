@@ -31,3 +31,26 @@ oc delete -f dailyclean.yml
 cd ../..
 rm -rf kto-mlflow
 ```
+
+Troubleshooting
+
+Il n'est pas impossible que certaines fois, quand on lance la github action, l'erreur suivante apparaisse :
+
+HTTP response body:
+```json 
+{
+  "kind": "Status",
+  "apiVersion": "v1",
+  "metadata": {},
+  "status": "Failure",
+  "message": "Unauthorized",
+  "reason": "Unauthorized",
+  "code": 401
+}
+```
+
+Il s'agit de votre jeton onpenshift qui n'est plus valide. Il faut donc le renouveler.
+
+Utiliser la commande suivante pour réveiller ou éteindre dailyclean
+
+kubectl scale --replicas=0 deployment/dailyclean-api
