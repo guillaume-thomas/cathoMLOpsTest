@@ -12,6 +12,8 @@ Nous obtenons à la fin le résultat du labelling que nous utiliserons dans le t
 
 D'abord, bien builder le package d'extraction (voir le readme), puis pip install des requirements de label
 
+Non ... plutôt faire le code dans ce dossier, puis ensuite, en faire un package réutilisable
+
 ```bash
 cd ./cats_and_dogs/label
 git clone https://github.com/AxaGuilDEv/ecotag.git
@@ -94,7 +96,6 @@ if (!string.IsNullOrEmpty(corsSettings.Origins))
 docker compose up -d
 cd ../../..
 ```
-
 
 Vérifier que tout fonctionne bien sur http://localhost:5010 (ou sur l'url de codespace)
 

@@ -1,3 +1,18 @@
+python ./cats_and_dogs/train/train.py
+
+bien mettre le .gitignore avec dist dans le répertoire en amont
+
+pip install -r ./cats_and_dogs/train/requirements.txt
+
+bien valider avec les eleves ces dependances keras
+
+
+
+
+
+
+
+
 https://numpy.org/doc/stable/reference/generated/numpy.split.html
 https://www.tensorflow.org/tutorials/images/classification?hl=fr
 https://machinelearningmastery.com/how-to-develop-a-convolutional-neural-network-to-classify-photos-of-dogs-and-cats/

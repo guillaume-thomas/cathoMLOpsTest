@@ -2,8 +2,7 @@ import argparse
 import os
 from asyncio import get_event_loop
 
-from mlopspython_extraction.extraction import extract_images
-
+from extraction import extract_images
 from ecotag import ApiInformation, Dataset, create_dataset, Project, Label, create_project
 
 parser = argparse.ArgumentParser("labelling")
@@ -19,6 +18,8 @@ raw_dataset_subfolder = args.raw_dataset_subfolder
 postprocess_dataset_subfolder = args.postprocess_dataset_subfolder
 
 if __name__ == "__main__":
+    # Faire le code ici
+
     # Initialisation du dataset
     raw_folder = dataset_folder + raw_dataset_subfolder
     postprocess_folder = dataset_folder + postprocess_dataset_subfolder
