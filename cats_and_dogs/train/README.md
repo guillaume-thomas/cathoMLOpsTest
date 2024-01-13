@@ -1,4 +1,4 @@
-python ./cats_and_dogs/train/train.py
+python ./cats_and_dogs/train/train.py --split_ratio_train=0.8 --split_ratio_evaluate=0.1 --split_ratio_test=0.1 --batch_size=64 --epochs=4 --working_dir="./cats_and_dogs/train/dist" --model_filename="final_model.keras" --model_plot_filename="model_plot.png"
 
 bien mettre le .gitignore avec dist dans le répertoire en amont
 
