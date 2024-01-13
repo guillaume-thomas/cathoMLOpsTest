@@ -2,6 +2,8 @@ import random
 import shutil
 from pathlib import Path
 
+import mlflow
+
 
 def random_split_train_evaluate_test_from_extraction(extract: dict,
                                                      classes: set,
@@ -41,6 +43,10 @@ def random_split_train_evaluate_test_from_extraction(extract: dict,
     copy_files(extract_train, train_dir)
     copy_files(extract_evaluate, evaluate_dir)
     copy_files(extract_test, test_dir)
+
+    mlflow.log_dict(extract, "annotations/split_train.json")
+    mlflow.log_dict(extract, "annotations/split_evaluate.json")
+    mlflow.log_dict(extract, "annotations/split_test.json")
 
 
 def copy_files(extract: dict, directory: str):

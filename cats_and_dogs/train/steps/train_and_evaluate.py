@@ -1,5 +1,6 @@
 from pathlib import Path
 
+import mlflow.keras
 from keras import Model
 from keras.src.applications import VGG16
 from keras.src.callbacks import History
@@ -61,6 +62,7 @@ def train_and_evaluate_model(train_dir: str,
     create_history_plots(history, plot_filepath)
 
     model.save(model_path)
+    mlflow.keras.log_model(model, "models", keras_model_kwargs={"save_format": "h5"})
 
 
 def define_model() -> Model:
