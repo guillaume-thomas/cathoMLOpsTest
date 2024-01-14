@@ -15,4 +15,4 @@ ENV AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
 COPY cats_and_dogs ./cats_and_dogs
 RUN chmod -R 777 ./cats_and_dogs
 
-RUN pip install -r /cats_and_dogs/train/requirements.txt
+RUN pip install -r /cats_and_dogs/requirements.txt

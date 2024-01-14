@@ -2,7 +2,7 @@ python ./cats_and_dogs/train/train.py --split_ratio_train=0.8 --split_ratio_eval
 
 bien mettre le .gitignore avec dist dans le répertoire en amont
 
-pip install -r ./cats_and_dogs/train/requirements.txt
+pip install -r ./cats_and_dogs/requirements.txt
 
 bien valider avec les eleves ces dependances keras
 

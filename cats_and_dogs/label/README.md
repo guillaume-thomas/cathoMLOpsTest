@@ -102,6 +102,6 @@ Vérifier que tout fonctionne bien sur http://localhost:5010 (ou sur l'url de co
 Puis, lancer l'initialisation du projet ecotag : 
 
 ```bash
-pip install -r ./cats_and_dogs/label/requirements.txt
+pip install -r ./cats_and_dogs/requirements.txt
 python ./cats_and_dogs/label/run.py --dataset_folder=./cats_and_dogs/label/dataset --raw_dataset_subfolder=/01_raw --postprocess_dataset_subfolder=/02_postprocess --jwt_token=
 ```

@@ -3,3 +3,4 @@ matplotlib
 scipy
 mlflow
 boto3
+aiohttp==3.9.1
