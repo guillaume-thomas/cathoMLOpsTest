@@ -12,7 +12,8 @@ def random_split_train_evaluate_test_from_extraction(extract: dict,
                                                      split_ratio_test: float,
                                                      train_dir: str,
                                                      evaluate_dir: str,
-                                                     test_dir: str):
+                                                     test_dir: str,
+                                                     s3_client):
 
     if split_ratio_train + split_ratio_evaluate + split_ratio_test != 1:
         raise Exception("sum of ratio must be equal to 1")
@@ -40,15 +41,15 @@ def random_split_train_evaluate_test_from_extraction(extract: dict,
         Path(test_dir + "/" + existing_class).mkdir(parents=True, exist_ok=True)
 
     # add files in directories
-    copy_files(extract_train, train_dir)
-    copy_files(extract_evaluate, evaluate_dir)
-    copy_files(extract_test, test_dir)
+    download_files(extract_train, train_dir, s3_client)
+    download_files(extract_evaluate, evaluate_dir, s3_client)
+    download_files(extract_test, test_dir, s3_client)
 
     mlflow.log_dict(extract, "annotations/split_train.json")
     mlflow.log_dict(extract, "annotations/split_evaluate.json")
     mlflow.log_dict(extract, "annotations/split_test.json")
 
 
-def copy_files(extract: dict, directory: str):
+def download_files(extract: dict, directory: str, s3_client):
     for key, value in extract.items():
-        shutil.copyfile("./cats_and_dogs/label/dataset/02_postprocess/" + key, directory + "/" + value + "/" + key)
+        s3_client.download_file("cats-dogs-other", "dataset/02_postprocess/" + key, directory + "/" + value + "/" + key)

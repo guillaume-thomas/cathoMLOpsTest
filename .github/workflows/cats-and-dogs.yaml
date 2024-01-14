@@ -1,4 +1,4 @@
-name: Python Continuous Integration
+name: Cats and dogs CI/CD
 on:
   push:
     branches: [ "main" ]

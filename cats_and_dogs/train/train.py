@@ -1,9 +1,11 @@
 import argparse
+import os
 
 import mlflow.keras
+from mlflow.store.artifact.s3_artifact_repo import _get_s3_client
 
-from steps.inference import Inference
 from steps.extraction import extraction_from_annotation_file
+from steps.inference import Inference
 from steps.split import random_split_train_evaluate_test_from_extraction
 from steps.test import test_model
 from steps.train_and_evaluate import train_and_evaluate_model
@@ -39,9 +41,16 @@ if __name__ == "__main__":
         mlflow.log_param("model_filename", model_filename)
         mlflow.log_param("model_plot_filename", model_plot_filename)
 
-        # extraction
-        extract, classes = extraction_from_annotation_file("./cats_and_dogs/label/output/cats_dogs_others-annotations.json")
+        # get s3 client from mlflow in order to download and upload data from minio
+        s3_client = _get_s3_client(
+            access_key_id=os.environ.get("AWS_ACCESS_KEY_ID"),
+            secret_access_key=os.environ.get("AWS_SECRET_ACCESS_KEY")
+        )
 
+        # extraction
+        extract, classes = extraction_from_annotation_file("output/cats_dogs_others-annotations.json",
+                                                           working_dir + "/cats_dogs_others-annotations.json",
+                                                           s3_client)
         # random split
 
         train_dir = working_dir + "/train"
@@ -50,7 +59,7 @@ if __name__ == "__main__":
 
         random_split_train_evaluate_test_from_extraction(extract, classes, split_ratio_train,
                                                          split_ratio_evaluate, split_ratio_test,
-                                                         train_dir, evaluate_dir, test_dir)
+                                                         train_dir, evaluate_dir, test_dir, s3_client)
 
         # train & evaluate
         model_dir = working_dir + "/model"
