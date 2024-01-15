@@ -1,3 +1,4 @@
+Intro : https://github.com/guillaume-chervet/Les-Minutes-MLOps/blob/main/Le%20MLOps%20est%20une%20aventure%20humaine.pptx
 Mise en place de git/clean code/tdd/sandbox
 Label
 Train

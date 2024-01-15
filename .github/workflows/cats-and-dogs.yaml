@@ -37,6 +37,24 @@ jobs:
           export MLFLOW_TRACKING_URI="${{vars.MLFLOW_TRACKING_URI}}"
           cd cats_and_dogs/train
           mlflow run . --experiment-name cats-dogs-other --backend kubernetes --backend-config kubernetes_config.json
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          push: true
+          tags: quay.io/gthomas59800/mlops_python_2023:1.0.0,quay.io/gthomas59800/mlops_python_2023:latest
+      - name: Deploy the API on development environment
+        run: |
+          # download oc
+          mkdir oc
+          cd oc
+          curl https://mirror.openshift.com/pub/openshift-v4/clients/oc/latest/linux/oc.tar.gz --output oc.tar.gz
+          tar xvf oc.tar.gz
+          cd ..
+          PATH=$PATH:$PWD/oc
+          cd deploy
+          oc login --token=${{secrets.OPENSHIFT_TOKEN}} --server=${{vars.OPENSHIFT_SERVER}}
+          oc apply -f mlops-api.yaml
       - name: Asleep kto-mlflow and dailyclean
         run: |
           curl -X POST ${{vars.DAILYCLEAN_ROUTE}}/pods/stop
