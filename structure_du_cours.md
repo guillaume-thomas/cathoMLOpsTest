@@ -2,6 +2,12 @@ Intro : https://github.com/guillaume-chervet/Les-Minutes-MLOps/blob/main/Le%20ML
 Mise en place de git/clean code/tdd/sandbox
 Label
 Train
+- le faire dans un notebook sur codespaces ???
+  - jouer les commandes : 
+```bash
+pip install notebook 
+jupyter notebook
+```
 Mlflow
 - présentation de mlflow et de ses composants
 - mise en place du projet MLFlow simple en local ??? problème de conda ? pyenv ?

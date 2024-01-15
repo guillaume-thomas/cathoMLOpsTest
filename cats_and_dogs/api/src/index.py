@@ -4,12 +4,13 @@ import os
 
 from fastapi import FastAPI, UploadFile, Depends
 from fastapi.security import OAuth2PasswordBearer
-from mlopspython_inference.model_pillow import Model
+from mlopspython_inference.inference import Inference
 from oidc_jwt_validation.authentication import Authentication
 from oidc_jwt_validation.http_service import ServiceGet
 
 app = FastAPI()
-model = Model(logging, "./production/api/resources/final_model.h5")
+
+model = Inference("./cats_and_dogs/api/resources/model.h5")
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 

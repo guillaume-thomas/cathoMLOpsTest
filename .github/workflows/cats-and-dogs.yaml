@@ -35,10 +35,25 @@ jobs:
         run: |
           export KUBE_MLFLOW_TRACKING_URI="${{vars.MLFLOW_TRACKING_URI}}"
           export MLFLOW_TRACKING_URI="${{vars.MLFLOW_TRACKING_URI}}"
+          export MLFLOW_S3_ENDPOINT_URL="${{vars.MLFLOW_S3_ENDPOINT_URL}}"
+          export AWS_ACCESS_KEY_ID="${{vars.AWS_ACCESS_KEY_ID}}" 
+          export AWS_SECRET_ACCESS_KEY="${{secrets.AWS_SECRET_ACCESS_KEY}}"
+          
           cd cats_and_dogs/train
           mlflow run . --experiment-name cats-dogs-other --backend kubernetes --backend-config kubernetes_config.json
+      - name: Download model from last finished run
+        run: |
+          export KUBE_MLFLOW_TRACKING_URI="${{vars.MLFLOW_TRACKING_URI}}"
+          export MLFLOW_TRACKING_URI="${{vars.MLFLOW_TRACKING_URI}}"
+          export MLFLOW_S3_ENDPOINT_URL="${{vars.MLFLOW_S3_ENDPOINT_URL}}"
+          export AWS_ACCESS_KEY_ID="${{vars.AWS_ACCESS_KEY_ID}}" 
+          export AWS_SECRET_ACCESS_KEY="${{secrets.AWS_SECRET_ACCESS_KEY}}"
+          
+          cd .github/workflows
+          export MLFLOW_RUN_ID=$(python -c 'import search_mlflow; print(search_mlflow.search_last_run_by_experiment_name("cats-dogs-other"))') 
+          mlflow artifacts download -r $MLFLOW_RUN_ID -a models/data/model.h5 -d cats_and_dogs/api/resources
       - name: Build and push Docker image
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v5
         with:
           context: .
           push: true
