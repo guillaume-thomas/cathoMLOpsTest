@@ -12,8 +12,8 @@ ENV MLFLOW_S3_ENDPOINT_URL=${MLFLOW_S3_ENDPOINT_URL}
 ENV AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
 ENV AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
 
-COPY cats_and_dogs/train ./cats_and_dogs/train
-COPY cats_and_dogs/requirements.txt ./cats_and_dogs/requirements.txt
+COPY --chown=${USER} cats_and_dogs/train ./cats_and_dogs/train
+COPY --chown=${USER} cats_and_dogs/requirements.txt ./cats_and_dogs/requirements.txt
 
 RUN chmod -R 777 ./cats_and_dogs
 RUN pip install -r /cats_and_dogs/requirements.txt
